@@ -1,65 +1,37 @@
-import cv2
-import numpy as np
+import os
+import requests
+from bs4 import BeautifulSoup
 
-# 加载模型和类别标签
-model = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
-classes = []
-with open("coco.names", "r") as f:
-    classes = [line.strip() for line in f.readlines()]
+# 设置搜索关键词和下载数量
+search_query = '猫'  # 替换为您想要搜索的关键词
+download_count = 10  # 替换为您想要下载的图像数量
 
-# 设置输入尺寸和阈值
-input_size = 416
-conf_threshold = 0.5
-nms_threshold = 0.4
+# 创建一个文件夹来保存下载的图像
+if not os.path.exists(search_query):
+    os.makedirs(search_query)
 
-# 加载图像并进行预处理
-img = cv2.imread("test.jpg")
-blob = cv2.dnn.blobFromImage(img, 1/255, (input_size, input_size), swapRB=True, crop=False)
+# 构建百度图片搜索的URL
+search_url = f'https://image.baidu.com/search/flip?tn=baiduimage&word={search_query}'
 
-# 将图像置入模型中进行前向推理
-model.setInput(blob)
-output_layers_names = model.getUnconnectedOutLayersNames()
-layerOutputs = model.forward(output_layers_names)
+# 发送HTTP请求获取搜索结果
+response = requests.get(search_url)
 
-# 解析输出结果并筛选符合条件的检测框
-boxes = []
-confidences = []
-classIDs = []
-
-for output in layerOutputs:
-    for detection in output:
-        scores = detection[5:]
-        classID = np.argmax(scores)
-        confidence = scores[classID]
-        if confidence > conf_threshold:
-            center_x = int(detection[0] * img.shape[1])
-            center_y = int(detection[1] * img.shape[0])
-            w = int(detection[2] * img.shape[1])
-            h = int(detection[3] * img.shape[0])
-
-            x = int(center_x - w/2)
-            y = int(center_y - h/2)
-
-            boxes.append([x, y, w, h])
-            confidences.append(float(confidence))
-            classIDs.append(classID)
-
-# 极大值抑制
-indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold, nms_threshold)
-
-# 标注检测结果
-if len(indices) > 0:
-    for i in indices.flatten():
-        x, y, w, h = boxes[i]
-        label = classes[classIDs[i]]
-        confidence = confidences[i]
-        color = (0, 255, 0)
-        cv2.rectangle(img, (x, y), (x+w, y+h), color, 2)
-        text = "{}: {:.4f}".format(label, confidence)
-        cv2.putText(img, text, (x, y-5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-
-# 显示并保存结果
-cv2.imshow("YOLOv3", img)
-cv2.imwrite("result.jpg", img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+if response.status_code == 200:
+    soup = BeautifulSoup(response.text, 'html.parser')
+    img_tags = soup.find_all('img', class_='main_img')
+    for i, img_tag in enumerate(img_tags):
+        if i >= download_count:
+            break
+        img_url = img_tag['data-imgurl']
+        img_response = requests.get(img_url)
+        if img_response.status_code == 200:
+            # 获取文件扩展名
+            file_extension = img_url.split('.')[-1]
+            # 保存图像到本地文件夹
+            with open(f'{search_query}/{search_query}_{i+1}.{file_extension}', 'wb') as f:
+                f.write(img_response.content)
+            print(f'Downloaded image {i + 1}/{download_count}')
+        else:
+            print(f'Failed to download image {i + 1}')
+else:
+    print('Failed to retrieve search results.')
