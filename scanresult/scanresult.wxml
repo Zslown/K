@@ -1,0 +1,6 @@
+<image src="{{imgurl}}"></image>
+<navigator url="/pages/getimg/getimg" open-type="redirect">
+<navigator url="/pages/mainpage/mainpage" open-type="redirect">
+  <button>返回上一页</button>
+</navigator>
+</navigator>

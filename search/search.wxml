@@ -1,0 +1,12 @@
+<view class="{{isNightMode ? 'titlecontainer1' : 'titlecontainer2'}}"></view>
+
+<image class="{{isNightMode ? 'nightmode' : 'daymode'}}" src="{{isNightMode ? 'https://ooo.0x0.ooo/2023/11/14/OeLCPK.png' : 'https://ooo.0x0.ooo/2023/11/14/OeL3zs.png'}}" bindtap="toggleNightMode" mode="widthFix" animation="{{animationData}}"/>
+
+<image class="searchBox" src="{{searchBoxSrc}}" mode="widthFix"></image>
+<image class="back" src="{{backSrc}}" mode="widthFix" bind:tap="redirectToMainpage"></image>
+<image class="search" src="{{searchSrc}}" mode="widthFix"  bindtap="handleSearch"></image>
+<input class="inputer" type="string" bindinput="handleInput" placeholder="请输入水果名称"/>
+
+
+
+
