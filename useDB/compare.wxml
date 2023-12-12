@@ -1,0 +1,20 @@
+<view class="{{isNightMode ? 'titlecontainer1' : 'titlecontainer2'}}"></view>
+
+<image class="{{isNightMode ? 'nightmode' : 'daymode'}}" src="{{isNightMode ? 'https://ooo.0x0.ooo/2023/11/14/OeLCPK.png' : 'https://ooo.0x0.ooo/2023/11/14/OeL3zs.png'}}" bindtap="toggleNightMode" mode="widthFix" animation="{{animationData}}"/>
+
+<image class="back" src="{{backSrc}}" mode="widthFix" bind:tap="redirectToMainpage"></image>
+<view>
+  <image class="pear" src="{{pearSrc}}" mode="widthFix" bind:tap="redirectToSearch"></image>
+  <image class="type" src="{{typeboxSrc}}" mode="widthFix" bind:tap="redirectToSearch"></image>
+  <text class="typetext">种类: 橘子</text>
+</view>
+<view class="freshbox">
+  <text class="freshtitle">新鲜/不新鲜/过期</text>
+</view>
+
+
+
+
+
+
+

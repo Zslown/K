@@ -1,0 +1,81 @@
+/* 页面 WXSS */
+
+.titlecontainer1{
+  background-color: #434343;
+  display: flex;
+  position :absolute ;
+  height: 150%;
+  justify-content: center;
+  align-items: center;
+  width: 750rpx;
+  left: 0rpx;
+  top:-150rpx;
+}
+.titlecontainer2{
+  background-color: #eafeff;
+  display: flex;
+  position :absolute ;
+  height: 150%;
+  justify-content: center;
+  align-items: center;
+  width: 750rpx;
+  left: 0rpx;
+  top:-150rpx;
+}
+
+.nightmode{
+  width: 130rpx;
+  position: absolute;
+  left: 560rpx;
+  top:50rpx;
+}
+.daymode{
+  width: 150rpx;
+  position: absolute;
+  left: 550rpx;
+  top:40rpx;
+}
+
+.back{
+  width: 140rpx;
+  position: absolute;
+  left: 50rpx;
+  top:1092rpx;
+}
+.type{
+  width: 540rpx;
+  position: absolute;
+  left: 160rpx;
+  top:210rpx;
+}
+.pear{
+  width: 130rpx;
+  position: absolute;
+  left: 20rpx;
+  top:200rpx;
+}
+.typetext {
+  position: absolute; /* 文字使用绝对定位 */
+  top: 265rpx; /* 调整位置，根据需要修改 */
+  width: 500rpx;
+  left: 58%;
+  transform: translate(-50%, -50%); /* 使文字居中 */
+  color: rgb(153, 153, 153); /* 文字颜色 */
+  font-size: 25px; /* 文字大小 */
+  /* 更多样式根据需要添加 */
+}
+.freshbox{
+  width: 540rpx;
+  position: absolute;
+  background-color:rgb(252, 224, 188);
+  min-height: 400rpx;
+  min-width: 690rpx;
+  left: 30rpx;
+  top:350rpx;
+  align-items: center;
+  border-radius: 30rpx;
+}
+.freshtitle{
+  font-size: 60rpx;
+  text-align:right;
+}

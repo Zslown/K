@@ -1,0 +1,32 @@
+<view class="{{isNightMode ? 'titlecontainer1' : 'titlecontainer2'}}"></view>
+
+<image class="{{isNightMode ? 'nightmode' : 'daymode'}}" src="{{isNightMode ? 'https://ooo.0x0.ooo/2023/11/14/OeLCPK.png' : 'https://ooo.0x0.ooo/2023/11/14/OeL3zs.png'}}" bindtap="toggleNightMode" mode="widthFix" animation="{{animationData}}"/>
+
+<image class="findresult" src="{{findresultSrc}}" mode="widthFix"></image>
+<image class="back" src="{{backSrc}}" mode="widthFix" bind:tap="redirectToMainpage"></image>
+<view>
+  <image class="pear" src="{{pearSrc}}" mode="widthFix" bind:tap="redirectToSearch"></image>
+  <image class="type" src="{{typeboxSrc}}" mode="widthFix" bind:tap="redirectToSearch"></image>
+  <text class="typetext">种类: {{searchText}}</text>
+</view>
+<view>
+  <image class="strawberry" src="{{strawberrySrc}}" mode="widthFix" bind:tap="redirectToSearch"></image>
+  <image class="sugar" src="{{sugarboxSrc}}" mode="widthFix" bind:tap="redirectToSearch"></image>
+  <text class="sugartext">糖分: 11%-14%</text>
+</view>
+<view>
+  <image class="monkeypeach" src="{{monkeypeachSrc}}" mode="widthFix"></image>
+  <image class="storagetime" src="{{storagetimeSrc}}" mode="widthFix"></image>
+  <text class="storagetimetext">保质期: 5天[常温]</text>
+</view>
+<view>
+  <image class="orange" src="{{orangeSrc}}" mode="widthFix" bind:tap="redirectToSearch"></image>
+  <image class="storagemethod" src="{{storagemethodSrc}}" mode="widthFix" bind:tap="redirectToSearch"></image>
+  <text class="storagemethodtext">保存方式: 悬挂</text>
+</view>
+
+<image class="compare" src="{{compareSrc}}" mode="widthFix" bind:tap="redirectToCompare"></image>
+
+
+
+
