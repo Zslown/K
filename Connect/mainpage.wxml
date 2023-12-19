@@ -1,0 +1,12 @@
+
+  <view class="{{isNightMode ? 'titlecontainer1' : 'titlecontainer2'}}">
+    <image class="logo" src="{{logoSrc}}" mode="widthFix" style="margin-top: -100%;"></image>
+    <image class="title" src="{{titleSrc}}" mode="widthFix" style="margin-top: -100%;"></image>
+  </view>
+<image src="/images/406769_camera_icon.png" class="camera" mode="widthFix" bind:tap="chooseimg"></image>
+<image class="{{isNightMode ? 'nightmode' : 'daymode'}}" src="{{isNightMode ? 'https://ooo.0x0.ooo/2023/11/14/OeLCPK.png' : 'https://ooo.0x0.ooo/2023/11/14/OeL3zs.png'}}" bindtap="toggleNightMode" mode="widthFix" animation="{{animationData}}"/>
+<image class="history" src="{{historySrc}} " mode="widthFix" bind:tap="redirectToHistory"></image>
+<image class="search" src="{{searchSrc}}" mode="widthFix" bind:tap="redirectToSearch"></image>
+
+
+
